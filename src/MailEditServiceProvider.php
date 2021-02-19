@@ -1,0 +1,41 @@
+<?php
+
+namespace mailcct\mailablecct;
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+
+
+class MailEditServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        $this->loadViewsFrom(__DIR__.'/./../resources/views','mailable');
+
+        $this->loadMigrationsFrom(__DIR__.'./../database/migrations');
+       
+        $this->publishes([
+        __DIR__.'/./../resources/views' => resource_path('views/mailable/'),
+        'views']);
+
+        
+        $this->mergeConfigFrom(__DIR__.'/../config/mailcct.php', 'mailcct');
+
+        $this->app['router']->namespace('mailcct\mailablecct\Http\Controllers')
+                ->middleware(['web'])
+                ->group(function () {
+                    $this->loadRoutesFrom(__DIR__ . '/Routes/mailable.php');
+                });
+                
+       $this->loadTranslationsFrom(__DIR__.'/./../resources/lang', 'mailablelang');
+
+    }
+    public function register()
+    {
+        
+    }
+    
+}
+
+
+   

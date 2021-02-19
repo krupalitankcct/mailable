@@ -1,0 +1,27 @@
+{
+    "name": "mailcct/mailablecct",
+    "description": "custom mail",
+    "type": "project",
+    "license": "MIT",
+    "version": "v1.0.0",
+    "authors": [
+        {
+            "name": "krupalibit1998",
+            "email": "krupali.t@communicationcrafts.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "mailcct\\mailablecct\\":"src/"
+        }
+    },
+    "extra": 
+    {
+      "laravel": 
+      {
+          "providers": [ "mailcct\\mailablecct\\MailEditServiceProvider" ]
+      }
+    },
+    "require": {}
+}
