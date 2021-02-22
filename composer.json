@@ -14,14 +14,14 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "mailcct\\mailablecct\\":"src/"
+            "Mailcct\\Mailablecct\\":"src/"
         }
     },
     "extra": 
     {
       "laravel": 
       {
-          "providers": [ "mailcct\\mailablecct\\MailEditServiceProvider" ]
+          "providers": [ "Mailcct\\Mailablecct\\MailEditServiceProvider" ]
       }
     },
     "require": {}

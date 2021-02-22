@@ -1,12 +1,11 @@
 <?php
 // 'src/Mail/WelcomeMail.php'
 
-namespace mailcct\mailablecct\Mail;
+namespace Mailcct\Mailablecct\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use JohnDoe\BlogPackage\Models\Post;
 
 class WelcomeMail extends Mailable
 {
@@ -15,7 +14,7 @@ class WelcomeMail extends Mailable
     public $content;
     public $subject;
 
-    public function __construct(Post $post)
+    public function __construct(request $request)
     {
         $content = $request->content;
         $subject = $request->subject;
@@ -23,9 +22,10 @@ class WelcomeMail extends Mailable
 
     public function build()
     {
-        return $this->view('mailable::sections.templates')->subject($subject)
-                 ->with([
+        return $this->view('mailable::sections.templates')
+                ->subject($subject)
+                ->with([
                      'content' =>$content,
-                 ])
+                 ]);
     }
 }

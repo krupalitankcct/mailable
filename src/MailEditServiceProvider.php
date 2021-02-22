@@ -1,6 +1,6 @@
 <?php
 
-namespace mailcct\mailablecct;
+namespace Mailcct\Mailablecct;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -24,7 +24,7 @@ class MailEditServiceProvider extends ServiceProvider
         
         $this->mergeConfigFrom(__DIR__.'/../config/mailcct.php', 'mailcct');
 
-        $this->app['router']->namespace('mailcct\mailablecct\Http\Controllers')
+        $this->app['router']->namespace('Mailcct\Mailablecct\Http\Controllers')
                 ->middleware(['web'])
                 ->group(function () {
                     $this->loadRoutesFrom(__DIR__ . '/Routes/mailable.php');
