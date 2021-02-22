@@ -1,5 +1,4 @@
-Daynamic content management packages 
-Run bellow command to install
+mailable packages Run bellow command to install
 
 composer require mailcct/mailablecct 
 
