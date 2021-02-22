@@ -54,25 +54,21 @@ class MailablesController extends Controller
 
         //validation rules
         $validator = Validator::make($request->all(),[
-            'mailable' => 'required|unique:mail_templates',
+            'mailable_type' => 'required|unique:mail_templates',
             'subject' => 'required',
             'html_template' => 'required',
         ]);
+
 
        //check validation
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         }
-        
-        //create mailable 
-        $exitCode = Artisan::call('make:mail '.$request->mailable);
-
-        if ($exitCode > -1) {
-            return redirect()->route('template.templatelist');
-        }
+         $mailable = 'WelcomeMail';
         //store mailable
         MailTemplate::create([
-            'mailable' => $request->mailable,
+            'mailable' =>  $mailable,
+            'mailable_type' => $request->mailable_type,
             'subject' => $request->subject,
             'html_template' => $request->html_template,
             'text_template' => $request->text_template,
@@ -100,7 +96,7 @@ class MailablesController extends Controller
         try{
         //validation rules
         $validator = Validator::make($request->all(),[
-            'mailable' => 'required|unique:mail_templates,mailable,'.$id.',id,deleted_at,NULL',
+            'mailable_type' => 'required|unique:mail_templates,mailable_type,'.$id.',id,deleted_at,NULL',
             'subject' => 'required',
             'html_template' => 'required',
         ]);
@@ -112,7 +108,8 @@ class MailablesController extends Controller
 
         //update data
        MailTemplate::whereId($id)->update([
-            'mailable' => $request->mailable,
+            'mailable' => 'WelcomeMail',
+            'mailable_type' => $request->mailable_type,
             'subject' => $request->subject,
             'html_template' => $request->html_template,
             'text_template' => $request->text_template,

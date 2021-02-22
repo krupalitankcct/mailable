@@ -11,6 +11,7 @@ class CreateMailTemplatesTable extends Migration
         Schema::create('mail_templates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mailable');
+            $table->string('mailable_type');
             $table->text('subject')->nullable();
             $table->longtext('html_template');
             $table->longtext('text_template')->nullable();
@@ -18,5 +19,18 @@ class CreateMailTemplatesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+    }
+     /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::disableForeignKeyConstraints();
+        
+        Schema::dropIfExists('mail_templates');
+
+        Schema::enableForeignKeyConstraints();
     }
 }

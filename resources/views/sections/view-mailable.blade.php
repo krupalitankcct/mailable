@@ -25,9 +25,9 @@
                             <table class="table table-responsive-sm table-striped">
                                 <thead>
                                 <tr>
-                                    <th>mailable</th>
-                                    <th>subject</th>
-                                    <th>status</th>
+                                    <th>Mailable Type</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
                                     <th>Operation</th>
                                 </tr>
                                 
@@ -37,7 +37,7 @@
                                     @if($mail_template->count() > 0)
                                     @foreach($mail_template as $mail_templates)
                                         <tr>
-                                            <td>{{ $mail_templates->mailable }}</td>
+                                            <td>{{ $mail_templates->mailable_type }}</td>
                                             <td>{{ $mail_templates->subject }}</td>
                                             <td>
                                                 @if($mail_templates->status == 'Active')

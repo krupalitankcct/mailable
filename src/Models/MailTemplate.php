@@ -12,6 +12,7 @@ class MailTemplate extends Model
     protected $fillable = [
         'id',
         'mailable',
+        'mailable_type',
         'subject',
         'html_template',
         'text_template',

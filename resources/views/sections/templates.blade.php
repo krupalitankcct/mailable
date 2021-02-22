@@ -5,8 +5,6 @@
 @section('content')
 
 <div>
-    <h5>Welcome</h5>
-
     {!! $content !!}
 </div>
 

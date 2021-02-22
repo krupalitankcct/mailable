@@ -29,8 +29,8 @@ class MailEditServiceProvider extends ServiceProvider
                 ->group(function () {
                     $this->loadRoutesFrom(__DIR__ . '/Routes/mailable.php');
                 });
-                
-       $this->loadTranslationsFrom(__DIR__.'/./../resources/lang', 'mailablelang');
+
+        $this->loadTranslationsFrom(__DIR__.'/./../resources/lang', 'mailablelang');
 
     }
     public function register()

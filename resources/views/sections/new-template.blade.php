@@ -10,9 +10,10 @@
      @include('mailable::sections.messages')
    <form action="{{ route('template.templatestore') }}" class="form-horizontal" method="post" >
     {{ csrf_field() }}
+        <input type="hidden" name="mailable" id="mailable" class="form-control" placeholder="mailable" >
         <div class="form-group row">
             <label class="form-control-label">{{__('mailablelang::mailable.edit_template.mailableName')}}</label> 
-            <input type="text" name="mailable" id="mailable" class="form-control" placeholder="mailable">
+            <input type="text" name="mailable_type" id="mailable_type" class="form-control" placeholder="mailable">
         </div>
         <div class="form-group row">
             <label class="form-control-label">{{__('mailablelang::mailable.edit_template.subject')}}</label>  
