@@ -1,6 +1,6 @@
 @extends('mailable::layout.app')
 
-@section('title', 'View Mailable')
+@section('title', 'View Template')
 
 @section('content')
 

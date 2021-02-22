@@ -10,7 +10,10 @@ class MailEditServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        //load view file
         $this->loadViewsFrom(__DIR__.'/./../resources/views','mailable');
+
+        // load migration 
 
         $this->loadMigrationsFrom(__DIR__.'./../database/migrations');
        

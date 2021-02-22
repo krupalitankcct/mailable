@@ -22,11 +22,10 @@ class WelcomeMail extends Mailable
 
     public function build()
     {
-
         return $this->view('mailable::sections.templates')
-                ->subject( $this->data['subject'])
-                ->with([
-                     'html_template' => $this->data['html_template'],
-                 ]);
+            ->subject( $this->data['subject'])
+            ->with([
+                 'html_template' => $this->data['html_template'],
+            ]);
     }
 }

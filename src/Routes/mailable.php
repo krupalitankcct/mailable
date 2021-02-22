@@ -6,8 +6,6 @@ Route::group(['prefix' => '', 'as' => 'template.'], function () {
     Route::post('/create', 'MailablesController@store')->name('templatestore');
     Route::get('/edit/{id}', 'MailablesController@edit')->name('templateedit');
     Route::post('/update/{id}', 'MailablesController@update')->name('templateupdate');
-    Route::post('/active', 'MailablesController@active')->name('templateactive');
-    Route::post('/inactive', 'MailablesController@inactive')->name('templateinactive');
     Route::post('/upload', 'MailablesController@upload')->name('templateupload');
 	Route::get('/destroy/{id}', 'MailablesController@destroy')->name('templatedestroy');
 	Route::get('/active/{id}', 'MailablesController@active')->name('templateactive');

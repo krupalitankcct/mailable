@@ -1,6 +1,6 @@
 @extends('mailable::layout.app')
 
-@section('title', 'New Template')
+@section('title', 'Edit Template')
 
 @section('editor', true)
 
@@ -12,7 +12,7 @@
     <input type="hidden" name="mailable" id="mailable" class="form-control" placeholder="mailable" >
     <div class="form-group row">
             <label class="form-control-label">{{__('mailablelang::mailable.edit_template.mailableName')}}</label>  
-            <input type="text" name="mailable_type" id="mailable_type" class="form-control" placeholder="mailable" value="{{$mail_template->mailable}}">
+            <input type="text" name="mailable_type" id="mailable_type" class="form-control" placeholder="mailable" value="{{$mail_template->mailable_type}}">
         </div>
         <div class="form-group row">
             <label class="form-control-label">{{__('mailablelang::mailable.edit_template.subject')}}</label> 

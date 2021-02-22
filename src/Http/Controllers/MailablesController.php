@@ -115,7 +115,7 @@ class MailablesController extends Controller
             'text_template' => $request->text_template,
         ]);
         //view template
-        return redirect()->route('template.templatelist');
+        return redirect()->route('template.templatelist')->withFlashSuccess(__('mailablelang::mailable.successmsg.templte_edit'));
 
         }catch(\Exception $ex) {
 
