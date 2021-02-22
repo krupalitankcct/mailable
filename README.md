@@ -1,4 +1,5 @@
-Mailable package Run bellow command to install
+
+Mailable packages Run bellow command to install
 
 ### Installation
 
@@ -35,6 +36,10 @@ get data in your db template according to your mailable type using this line
 Then run bellow command to publish config and resource files
 
 If you want to change these options, you'll have to publish the `views` file.
+
+
+php artisan vendor:publish --provider="Mailcct\\Mailablecct\\MailEditServiceProvider" --tag="css"
+>>>>>>> 3720e9c07f86cf595f72a64cfe23db4bcc2f5013
 
 	php artisan vendor:publish --provider="Mailcct\\Mailablecct\\MailEditServiceProvider" --tag="css"
 
