@@ -11,13 +11,13 @@ class WelcomeMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $content;
+    public $html_template;
     public $subject;
 
-    public function __construct(request $request)
+    public function __construct($request)
     {
-        $content = $request->content;
-        $subject = $request->subject;
+        $html_template = $request['html_template'];
+        $subject = $request['subject'];
     }
 
     public function build()
@@ -25,7 +25,7 @@ class WelcomeMail extends Mailable
         return $this->view('mailable::sections.templates')
                 ->subject($subject)
                 ->with([
-                     'content' =>$content,
+                     'html_template' =>$html_template,
                  ]);
     }
 }

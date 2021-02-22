@@ -5,7 +5,7 @@
 @section('content')
 
 <div>
-    {!! $content !!}
+    {!! $html_template !!}
 </div>
 
 @endsection

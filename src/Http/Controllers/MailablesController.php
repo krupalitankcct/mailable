@@ -1,7 +1,6 @@
 <?php
 
-namespace mailcct\mailablecct\Http\Controllers;
-
+namespace Mailcct\Mailablecct\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
@@ -9,10 +8,10 @@ use Illuminate\Support\Facades\Config;
 use Mailcct\Mailablecct\Models\MailTemplate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
-use App\Mail\WelcomeMail;
 use Mail;
 use Redirect;
 use Artisan;
+use Mailcct\Mailablecct\Mail\WelcomeMail;
 
 class MailablesController extends Controller
 {
@@ -51,6 +50,16 @@ class MailablesController extends Controller
     public function store(Request $request)
     {
         try{
+
+
+        $tomail = "test123@yopmail.com";
+        $mailable_type = 'order_view';
+
+        $mail_template =  MailTemplate::select('*')->where('mailable_type',$mailable_type)->first();
+        $content = $mail_template['html_template'];
+        $subject = $mail_template['subject'];
+
+        Mail::to($tomail)->send(new WelcomeMail($content));
 
         //validation rules
         $validator = Validator::make($request->all(),[
