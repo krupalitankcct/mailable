@@ -14,14 +14,6 @@ class MailEditServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'./../database/migrations');
        
-        $this->publishes([
-        __DIR__.'/./../resources/views' => resource_path('views/mailable/'),
-        'views']);
-
-        $this->publishes([
-        __DIR__.'/./../public/' => public_path('vendor/maileclipse/'),
-        'css']);
-        
         $this->mergeConfigFrom(__DIR__.'/../config/mailcct.php', 'mailcct');
 
         $this->app['router']->namespace('Mailcct\Mailablecct\Http\Controllers')
@@ -31,6 +23,14 @@ class MailEditServiceProvider extends ServiceProvider
                 });
 
         $this->loadTranslationsFrom(__DIR__.'/./../resources/lang', 'mailablelang');
+
+        $this->publishes([
+        __DIR__.'/./../resources/views' => resource_path('views/mailable/'),
+        'views']);
+
+        $this->publishes([
+        __DIR__.'/./../public/' => public_path('vendor/maileclipse/'),
+        'css']);
 
     }
     public function register()
