@@ -51,16 +51,6 @@ class MailablesController extends Controller
     {
         try{
 
-
-        $tomail = "test123@yopmail.com";
-        $mailable_type = 'order_view';
-
-        $mail_template =  MailTemplate::select('*')->where('mailable_type',$mailable_type)->first();
-        $content = $mail_template['html_template'];
-        $subject = $mail_template['subject'];
-
-        Mail::to($tomail)->send(new WelcomeMail($content));
-
         //validation rules
         $validator = Validator::make($request->all(),[
             'mailable_type' => 'required|unique:mail_templates',
@@ -87,7 +77,8 @@ class MailablesController extends Controller
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return redirect()->route('template.templatelist');
+            dd($ex->getMessage());
+            // return redirect()->route('template.templatelist');
         }
     }
 
