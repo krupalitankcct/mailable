@@ -2,7 +2,7 @@ Mailable packages Run bellow command to install
 
 composer require mailcct/mailablecct 
 
-1.php artisan migrate
+1. php artisan migrate
 
 2. if you send mail in usig this packages added this line in your controller  
 
