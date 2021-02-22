@@ -21,15 +21,13 @@ import your mailable model
 
 get data in your db template according to your mailable type using this line 
 
-	$mail_template =  MailTemplate::select('*')->where('mailable_type',$mailable_type)->first();
-	
-	if(count($mail_template) > 0){
-	$data['html_template'] = $mail_template['html_template'];
-	$data['subject'] = $mail_template['subject'];
+	if(!empty($mail_template)){
+        $data['html_template'] = $mail_template['html_template'];
+        $data['subject'] = $mail_template['subject'];
 
-	/* send mail  */
-	Mail::to($tomail)->send(new WelcomeMail($data));
-	}
+        /* send mail  */
+        Mail::to($tomail)->send(new WelcomeMail($data));
+        }
 	
 
 ### Configuration
