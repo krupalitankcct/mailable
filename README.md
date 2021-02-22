@@ -7,11 +7,11 @@ Mailable packages Run bellow command to install
 
 ### Migration
 
-1. php artisan migrate
+	php artisan migrate
 
-2. if you send mail in usig this packages added this line in your controller  
+if you send mail in usig this packages added this line in your controller  
 
-		use Mailcct\Mailablecct\Mail\WelcomeMail;
+	use Mailcct\Mailablecct\Mail\WelcomeMail;
 
 after add this line you can send mail according to pass mailable type and get template data in your db 
 
