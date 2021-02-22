@@ -18,6 +18,9 @@ class MailEditServiceProvider extends ServiceProvider
         __DIR__.'/./../resources/views' => resource_path('views/mailable/'),
         'views']);
 
+        $this->publishes([
+        __DIR__.'/./../public/' => public_path('vendor/maileclipse/'),
+        'css']);
         
         $this->mergeConfigFrom(__DIR__.'/../config/mailcct.php', 'mailcct');
 
