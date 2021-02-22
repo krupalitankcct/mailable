@@ -1,4 +1,4 @@
-mailable packages Run bellow command to install
+Mailable packages Run bellow command to install
 
 composer require mailcct/mailablecct 
 
