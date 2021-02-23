@@ -38,15 +38,6 @@ get data in your db template according to your mailable type using this line
             Mail::to($tomail)->send(new CommonMail($data));
 
             }
-	$mail_template = MailTemplate::select('mail_templates.*')->where('mailable_type',$mail_type)->first();
-
-	if(!empty($mail_template)){
-        $data['html_template'] = $mail_template['html_template'];
-        $data['subject'] = $mail_template['subject'];
-
-        /* send mail  */
-        Mail::to($tomail)->send(new CommonMail($data));
-        }
 	
 
 ### Configuration
