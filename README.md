@@ -22,7 +22,8 @@ use Mailcct\Mailablecct\Models\MailTemplate;
 get data in your db template according to your mailable type using this line 
 	
 	// pass mailable type accoding to send mail template 
-	$mail_type = 'order_viewd';
+	
+	EX. $mail_type = 'order_view';
 
 	$mail_template = MailTemplate::select('mail_templates.*')->where('mailable_type',$mail_type)->first();
 
