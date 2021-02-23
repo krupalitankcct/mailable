@@ -11,22 +11,27 @@ Mailable packages Run bellow command to install
 
 2. if you send mail in usig this packages added this line in your controller  
 
-		use Mailcct\Mailablecct\Mail\WelcomeMail;
+		use Mailcct\Mailablecct\Mail\CommonMail;
 
 after add this line you can send mail according to pass mailable type and get template data in your db 
-
+		
 import your mailable model 
 
 	use Mailcct\Mailablecct\Models\MailTemplate;
 
 get data in your db template according to your mailable type using this line 
+	
+	// pass mailable type accoding to send mail template 
+	$mail_type = 'order_viewd';
+
+	$mail_template = MailTemplate::select('mail_templates.*')->where('mailable_type',$mail_type);
 
 	if(!empty($mail_template)){
         $data['html_template'] = $mail_template['html_template'];
         $data['subject'] = $mail_template['subject'];
 
         /* send mail  */
-        Mail::to($tomail)->send(new WelcomeMail($data));
+        Mail::to($tomail)->send(new CommonMail($data));
         }
 	
 

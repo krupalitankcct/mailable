@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Mail;
 use Redirect;
 use Artisan;
-use Mailcct\Mailablecct\Mail\WelcomeMail;
+use Mailcct\Mailablecct\Mail\CommonMail;
 
 class MailablesController extends Controller
 {
@@ -63,7 +63,7 @@ class MailablesController extends Controller
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         }
-         $mailable = 'WelcomeMail';
+         $mailable = 'CommonMail';
         //store mailable
         MailTemplate::create([
             'mailable' =>  $mailable,
@@ -108,7 +108,7 @@ class MailablesController extends Controller
 
         //update data
        MailTemplate::whereId($id)->update([
-            'mailable' => 'WelcomeMail',
+            'mailable' => 'CommonMail',
             'mailable_type' => $request->mailable_type,
             'subject' => $request->subject,
             'html_template' => $request->html_template,

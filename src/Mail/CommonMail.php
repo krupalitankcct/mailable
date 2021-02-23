@@ -1,5 +1,4 @@
 <?php
-// 'src/Mail/WelcomeMail.php'
 
 namespace Mailcct\Mailablecct\Mail;
 
@@ -7,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeMail extends Mailable
+class CommonMail extends Mailable
 {
     use Queueable, SerializesModels;
 
