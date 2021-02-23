@@ -24,7 +24,7 @@ get data in your db template according to your mailable type using this line
 	// pass mailable type accoding to send mail template 
 	$mail_type = 'order_viewd';
 
-	$mail_template = MailTemplate::select('mail_templates.*')->where('mailable_type',$mail_type);
+	$mail_template = MailTemplate::select('mail_templates.*')->where('mailable_type',$mail_type)->first();
 
 	if(!empty($mail_template)){
         $data['html_template'] = $mail_template['html_template'];
