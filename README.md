@@ -17,13 +17,14 @@ after add this line you can send mail according to pass mailable type and get te
 		
 import your mailable model 
 
-use Mailcct\Mailablecct\Models\MailTemplate;
+	use Mailcct\Mailablecct\Models\MailTemplate;
 
 get data in your db template according to your mailable type using this line 
 	
 	// pass mailable type accoding to send mail template 
+	
+	EX. $mail_type = 'order_view';
 
-	Ex. $mail_type = 'order_view';
 
 	$mail_template = MailTemplate::select('mail_templates.*')->where('mailable_type',$mail_type)->first();
 
