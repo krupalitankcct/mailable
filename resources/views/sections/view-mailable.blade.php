@@ -1,4 +1,4 @@
-@extends('mailable::layout.app')
+@extends('mailable::layouts.admin-app')
 
 @section('title', 'View Template')
 
@@ -11,7 +11,7 @@
                     @include('mailable::sections.messages')
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i>
+                            <i class="fa fa-align-justify"></i>Mail Template Management
 
                             <div class="m-portlet__head-tools float-right">
                                 <a class="btn btn-success" routerlink="add" routerlinkactive="active" style="margin-right:10px;" ng-reflect-router-link="add" ng-reflect-router-link-active="active" href="{{ route('template.templatecreate') }}">

@@ -32,7 +32,7 @@ class MailEditServiceProvider extends ServiceProvider
         'views']);
 
         $this->publishes([
-        __DIR__.'/./../public/' => public_path('vendor/maileclipse/'),
+        __DIR__.'/./../public/' => public_path('mailable'),
         'css']);
 
     }

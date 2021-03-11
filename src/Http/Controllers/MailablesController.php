@@ -27,11 +27,17 @@ class MailablesController extends Controller
     }
     public function index()
     {
-        //get data from mail templtaes 
-        $mail_template = MailTemplate::select('mail_templates.*')->get();
+        try{
+            //get data from mail templtaes 
+            $mail_template = MailTemplate::select('mail_templates.*')->get();
 
-        //view template
-        return view('mailable::sections.view-mailable',compact('mail_template'));
+            //view template
+            return view('mailable::sections.view-mailable',compact('mail_template'));
+
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
+        }
     }
 
     public function create(Request $request)
@@ -43,7 +49,7 @@ class MailablesController extends Controller
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return redirect()->route('template.templatelist');
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -53,8 +59,8 @@ class MailablesController extends Controller
 
         //validation rules
         $validator = Validator::make($request->all(),[
-            'mailable_type' => 'required|unique:mail_templates',
-            'subject' => 'required',
+            'mailable_type' => 'required|unique:mail_templates|max:255',
+            'subject' => 'required|max:255',
             'html_template' => 'required',
         ]);
 
@@ -78,16 +84,22 @@ class MailablesController extends Controller
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
             dd($ex->getMessage());
-            // return redirect()->route('template.templatelist');
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
     public function edit(Request $request,$id)
     {
-        // find detail
-        $mail_template =  MailTemplate::findOrFail($id);
-        // return view
-        return view('mailable::sections.edit-template',compact('mail_template'));
+        try{
+            // find detail
+            $mail_template =  MailTemplate::findOrFail($id);
+            // return view
+            return view('mailable::sections.edit-template',compact('mail_template'));
+        
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
+        }
     }
 
     public function update(Request $request,$id)
@@ -96,8 +108,8 @@ class MailablesController extends Controller
         try{
         //validation rules
         $validator = Validator::make($request->all(),[
-            'mailable_type' => 'required|unique:mail_templates,mailable_type,'.$id.',id,deleted_at,NULL',
-            'subject' => 'required',
+            'mailable_type' => 'required|max:255|unique:mail_templates,mailable_type,'.$id.',id,deleted_at,NULL',
+            'subject' => 'required|max:255',
             'html_template' => 'required',
         ]);
 
@@ -120,7 +132,7 @@ class MailablesController extends Controller
         }catch(\Exception $ex) {
 
             Log::error($ex->getMessage());
-            return redirect()->route('template.templatelist');
+            return Redirect::back()->withFlashDanger($ex->getMessage());
 
         }
     }
@@ -137,7 +149,7 @@ class MailablesController extends Controller
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('template.templatelist')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -171,12 +183,18 @@ class MailablesController extends Controller
 
     public function active($id)
     {
-        $templateActive = $this->MailTemplate->findOrFail($id);
-        $templateActive->status = 'Active';
-        $templateActive->save();
+        try{
+            $templateActive = $this->MailTemplate->findOrFail($id);
+            $templateActive->status = 'Active';
+            $templateActive->save();
 
-        // return redirect method
-       return redirect()->route('template.templatelist')->withFlashSuccess(__('mailablelang::mailable.successmsg.template_active'));
+            // return redirect method
+            return redirect()->route('template.templatelist')->withFlashSuccess(__('mailablelang::mailable.successmsg.template_active'));
+        
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
+        }
     }
 
     /**
@@ -186,16 +204,18 @@ class MailablesController extends Controller
      */
     public function inactive($id)
     {
-        $templateinActive = $this->MailTemplate->findOrFail($id);
-        $templateinActive->status = 'Inactive';
-        $templateinActive->save();
+        try{
+            $templateinActive = $this->MailTemplate->findOrFail($id);
+            $templateinActive->status = 'Inactive';
+            $templateinActive->save();
 
-       // return redirect method
-        return redirect()->route('template.templatelist')->withFlashSuccess(__('mailablelang::mailable.successmsg.template_inactive'));
+        // return redirect method
+            return redirect()->route('template.templatelist')->withFlashSuccess(__('mailablelang::mailable.successmsg.template_inactive'));
+    
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
+        }
     }
 
-
-
-
-   
 }
