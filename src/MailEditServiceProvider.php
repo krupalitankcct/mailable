@@ -28,11 +28,11 @@ class MailEditServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/./../resources/lang', 'mailablelang');
 
         $this->publishes([
-        __DIR__.'/./../resources/views' => resource_path('views/vendor/mailable'),
+        __DIR__.'/./../resources/views' => resource_path('views/vendor/mailable/'),
         'views']);
 
         $this->publishes([
-        __DIR__.'/./../public/' => public_path('mailable'),
+        __DIR__.'/./../public/' => public_path('mailable/'),
         'css']);
 
     }
