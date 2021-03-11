@@ -33,7 +33,9 @@ class MailEditServiceProvider extends ServiceProvider
 
         $this->publishes([
         __DIR__.'/./../public/' => public_path('mailable/'),
-        'css']);
+        'asset']);
+        
+        Artisan::call('vendor:publish --tag="asset"');
 
     }
     public function register()
