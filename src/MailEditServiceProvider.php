@@ -1,7 +1,7 @@
 <?php
 
 namespace Mailcct\Mailablecct;
-
+use Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
